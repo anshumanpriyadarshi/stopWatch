@@ -4,6 +4,10 @@ let m = 0;
 let h = 0;
 let ms = 0;
 let status = false;
+let timestamps = [];
+
+ let url = '';
+ let obj = '/viewhistory?obj='
 
 //DOM Selecting
 let minute = document.getElementById("minute");
@@ -14,6 +18,7 @@ let msecond = document.getElementById("msecond");
 let start = document.getElementById("start");
 let stopp = document.getElementById("stop");
 let reset = document.getElementById("reset");
+let history = document.getElementById("history") ;
 
 // CLOCK LOGIC
 function stopWatch(){
@@ -34,6 +39,12 @@ function stopWatch(){
 
 // CLOCK CAll
 function startclock(){
+    timestamps.push({s : s,
+    m : m,
+    h : h,
+    ms : ms
+    });
+
     if(status === true){
         return;
     }
@@ -50,16 +61,32 @@ function startclock(){
             // console.log(h + ":" + m + ":" + s);
         },10);
     } 
+    url = JSON.stringify(timestamps);
+    //obj = obj + url;
+    // console.log(timestamps);
+    // console.log(url);
+    updatelink();
+    
 }
 
 function stopclock(){
+    timestamps.push({s : s,
+        m : m,
+        h : h,
+        ms : ms
+        });
     if(status === true){
         status = false
         clearInterval(x)
     }
     else{
-        return
+        
     }
+    url = JSON.stringify(timestamps);
+    //obj = obj + url;
+    // console.log(timestamps);
+    // console.log(url);
+    updatelink();
 }
 
 
@@ -83,3 +110,11 @@ reset.addEventListener("click",()=>{
     hour.innerHTML = h;
     msecond.innerHTML = ms;
 })
+
+
+
+// OBJECT append
+
+function updatelink(){
+    history.setAttribute("href", obj + url);
+}

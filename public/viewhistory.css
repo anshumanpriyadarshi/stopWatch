@@ -1,0 +1,19 @@
+@import url(https://fonts.googleapis.com/css?family=Covered+By+Your+Grace);
+
+body {
+    text-align: center;
+    font-family: 'Covered By Your Grace', cursive;
+    color: white;
+    background: #222;
+  }
+
+  div {
+    display: inline-block;
+    line-height: 1;
+    padding: 20px;
+    font-size: 40px;
+  }
+
+  h1{
+    font-size: 70px;
+  }
